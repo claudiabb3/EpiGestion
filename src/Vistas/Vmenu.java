@@ -23,6 +23,7 @@ public class Vmenu extends javax.swing.JFrame {
          this.getContentPane().setBackground(Color.decode("#FFFFFF"));
          this.setLocation(0,0);
          this.setVisible(false);
+         this.setTitle("EpiGestion");
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -180,7 +181,7 @@ public class Vmenu extends javax.swing.JFrame {
  //icono jframe 
        @Override
     public Image getIconImage(){
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Img/ropa60px.png"));
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Img/ingeniero60px.png"));
         return retValue;
     }
     private void imgEpiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgEpiMouseClicked

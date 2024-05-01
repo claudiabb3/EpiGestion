@@ -22,7 +22,7 @@ public class UsuarioDB extends ConexionDB {
     //---------------- consulta a la base dedatos ----------------------//
     private Usuario consultaUsuario(String nombre, String password) {
       
-       String sql = "select * from usuario where Nombre= '"+nombre+"' and Contrasenia='"+password+"';";
+       String sql = " select * from usuario where Nombre= '"+nombre+"' and Contrasenia='"+password+"';";
         
         try {
             conectar();
@@ -35,7 +35,7 @@ public class UsuarioDB extends ConexionDB {
                 usuario.setPass(rs.getString(3));
                 usuario.setDepartamento(rs.getString(4));
             }
-        } catch (ClassNotFoundException | SQLException e) {
+        } catch (SQLException e) {
             System.out.println("Error al validar usuario: " + e.getMessage());
         }finally{
         desconectar();

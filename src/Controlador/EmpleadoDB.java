@@ -49,7 +49,7 @@ public class EmpleadoDB extends ConexionDB {
                 
                 lista.add(emp);
             }
-             } catch(ClassNotFoundException | SQLException e){
+             } catch(SQLException e){
                     System.out.println("Error en empladoDao");
                 }finally{
        desconectar();
@@ -77,7 +77,7 @@ public class EmpleadoDB extends ConexionDB {
                 
                 lista.add(emp);
             }
-             } catch(ClassNotFoundException | SQLException e){
+             } catch(SQLException e){
                     System.out.println("Error en empladoDao");
                 } finally{
        desconectar();
@@ -102,7 +102,7 @@ public class EmpleadoDB extends ConexionDB {
                 emp.setApellido2(rs.getString(4));
                 emp.setPuesto(rs.getString(5));   
             }
-             } catch(ClassNotFoundException | SQLException e){
+             } catch(SQLException e){
                     System.out.println("Error en empladoDao");
                     } finally{
        desconectar();

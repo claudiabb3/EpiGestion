@@ -28,13 +28,14 @@ public final class Vlogin extends javax.swing.JFrame {
          
          
          setIconImage(getIconImage());
+         this.setTitle("EpiGestion");
         
     }
     
     //icono jframe 
        @Override
     public Image getIconImage(){
-        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Img/ropa60px.png"));
+        Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Img/ingeniero60px.png"));
         return retValue;
     }
     

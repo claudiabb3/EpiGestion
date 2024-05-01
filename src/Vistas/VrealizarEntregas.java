@@ -307,11 +307,11 @@ public class VrealizarEntregas extends javax.swing.JPanel {
         }
       
       if (tfIdEmp.getText().isEmpty() ) {
-            JOptionPane.showMessageDialog(this, "Añadir empleado");
+            JOptionPane.showMessageDialog(this, "Añadir empleado","Error",JOptionPane.ERROR_MESSAGE);
         } else if(tablaEntregas.getRowCount()==0){
-         JOptionPane.showMessageDialog(this, "Añadir equipo");
+         JOptionPane.showMessageDialog(this, "Añadir equipo","Error",JOptionPane.ERROR_MESSAGE);
         }else if(unidadesNulas){
-         JOptionPane.showMessageDialog(this, "Añadir unidades");
+         JOptionPane.showMessageDialog(this, "Añadir unidades","Error",JOptionPane.ERROR_MESSAGE);
         }else{
            
          entregaepidb.crearPDFentrega(nombreUn, ruta, jlNombre.getText(), jlApellido1.getText(),
@@ -329,7 +329,7 @@ public class VrealizarEntregas extends javax.swing.JPanel {
         
         // limpiar tabla de entregas
          entregaepidb.limpiarTabEntregas(tablaEntregas);
-         JOptionPane.showMessageDialog(this, "Entrega realizada");
+         JOptionPane.showMessageDialog(this, "Entrega realizada","OK",JOptionPane.PLAIN_MESSAGE);
         }
         
         
@@ -345,7 +345,7 @@ public class VrealizarEntregas extends javax.swing.JPanel {
     private void btnAdd1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAdd1MouseClicked
       
         if(tablaEpis.getSelectedRow()==-1){
-       JOptionPane.showMessageDialog(this, "Hay que seleccionar fila");
+       JOptionPane.showMessageDialog(this, "Hay que seleccionar fila","Error",JOptionPane.ERROR_MESSAGE);
     }else{
          epidb.moverFila(tablaEntregas, tablaEpis);
         }

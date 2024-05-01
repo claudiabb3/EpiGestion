@@ -33,7 +33,7 @@ public class EpiDB extends ConexionDB{
     private List tablaEpi() {
         
         List<Epi> lista = new ArrayList<>();
-        String sql = "Select * from epi";
+        String sql = " Select * from epi";
         try{
              conectar();
             ps = prepararConsulta(sql);
@@ -49,7 +49,7 @@ public class EpiDB extends ConexionDB{
               
               lista.add(epis);
             }
-                    } catch(ClassNotFoundException | SQLException e){
+                    } catch(SQLException e){
                         System.out.println("Error en el metodo tablaEpi de la clase EpiDAO");
                     }finally{
         desconectar();
@@ -72,7 +72,7 @@ public class EpiDB extends ConexionDB{
          
             ps.executeUpdate();
         
-        }catch(ClassNotFoundException | SQLException e){
+        }catch(SQLException e){
          System.out.println("error en metodo add de epiB");
         
         }finally{
@@ -91,7 +91,7 @@ public class EpiDB extends ConexionDB{
             
             ps.executeUpdate();
         
-        }catch(ClassNotFoundException | SQLException e){
+        }catch(SQLException e){
             System.out.println("error metodo actualzar de epiDAO");
          }finally{
         desconectar();
@@ -110,7 +110,7 @@ public class EpiDB extends ConexionDB{
         } else {
             System.out.println("No se encontró ningún registro con Id_epi " + id + " para eliminar.");
         }
-    } catch (ClassNotFoundException | SQLException e) {
+    } catch (SQLException e) {
         System.out.println("Error al intentar eliminar el registro de la base de datos: " + e.getMessage());
     }finally{
         desconectar();
@@ -125,7 +125,7 @@ public class EpiDB extends ConexionDB{
         ps.setInt(1, und);
         ps.setInt(2, id);
         ps.executeUpdate();
-    } catch (ClassNotFoundException | SQLException e) {
+    } catch (SQLException e) {
         System.out.println("Error al actualizar unidades de la base de datos: " + e.getMessage());
     } finally {
         desconectar(); 
@@ -144,7 +144,7 @@ public class EpiDB extends ConexionDB{
             int count = rs.getInt(1);
             return count > 0;
         }
-    } catch (ClassNotFoundException | SQLException e) {
+    } catch (SQLException e) {
         System.out.println("Error al verificar si existe el EPI: " + e.getMessage());
     }
     return false;
@@ -160,7 +160,7 @@ public class EpiDB extends ConexionDB{
         if (rs.next()) {
             unidadesActuales = rs.getInt("Unidades");
         }
-    } catch (ClassNotFoundException | SQLException e) {
+    } catch (SQLException e) {
         System.out.println("Error al obtener las unidades del EPI: " + e.getMessage());
     } finally {
         desconectar();
@@ -241,9 +241,9 @@ public class EpiDB extends ConexionDB{
 
     // Verificar si las unidades introducidas son diferentes a las actuales
     if (und <= 0) {
-        JOptionPane.showMessageDialog(vepi, "La cantidad de unidades debe ser mayor que cero.");
+        JOptionPane.showMessageDialog(vepi, "La cantidad de unidades debe ser mayor que cero.","Error",JOptionPane.ERROR_MESSAGE);
     } else if (und == unidadesActuales) {
-        JOptionPane.showMessageDialog(vepi, "No se ha actualizado");
+        JOptionPane.showMessageDialog(vepi, "No se ha actualizado","Error",JOptionPane.ERROR_MESSAGE);
     } else {
         Object[] ob = new Object[]{und, id};
 
@@ -256,7 +256,7 @@ public class EpiDB extends ConexionDB{
 
     // Verificar si ya existe un registro con la misma descripción y talla
     if (existeEpi(descripcion, talla)) {
-        JOptionPane.showMessageDialog(vepi, "Ya existe un EPI con la misma descripción y talla.");
+        JOptionPane.showMessageDialog(vepi, "Ya existe un EPI con la misma descripción y talla.","Error",JOptionPane.ERROR_MESSAGE);
     } else {
         // Si no existe, procede a agregar el nuevo registro
         Object[] ob = new Object[3];
@@ -269,16 +269,16 @@ public class EpiDB extends ConexionDB{
             ob[2] = und;
 
             if (descripcion.isEmpty()) {
-                JOptionPane.showMessageDialog(vepi, "Debes añadir una descripción.");
+                JOptionPane.showMessageDialog(vepi, "Debes añadir una descripción.","Error",JOptionPane.ERROR_MESSAGE);
             } else if (talla.isEmpty()) {
-                JOptionPane.showMessageDialog(vepi, "Debes añadir una talla.");
+                JOptionPane.showMessageDialog(vepi, "Debes añadir una talla.","Error",JOptionPane.ERROR_MESSAGE);
             } else if (und <= 0) {
-                JOptionPane.showMessageDialog(vepi, "La cantidad no es valida");
+                JOptionPane.showMessageDialog(vepi, "La cantidad no es valida","Error",JOptionPane.ERROR_MESSAGE);
             } else {
                 añadirB(ob);
             }
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(vepi, "El valor de la cantidad no es valido");
+            JOptionPane.showMessageDialog(vepi, "El valor de la cantidad no es valido","Error",JOptionPane.ERROR_MESSAGE);
         }
     }
 }
@@ -288,11 +288,11 @@ public class EpiDB extends ConexionDB{
 
     // Verificar si no se ha seleccionado ninguna fila
     if (filasSeleccionadas == 0) {
-        JOptionPane.showMessageDialog(vepi, "Debes seleccionar una fila para eliminar.");
+        JOptionPane.showMessageDialog(vepi, "Debes seleccionar una fila para eliminar.","Error",JOptionPane.ERROR_MESSAGE);
     } 
     // Verificar si se ha seleccionado más de una fila
     else if (filasSeleccionadas > 1) {
-        JOptionPane.showMessageDialog(vepi, "Solo puedes eliminar una fila a la vez.");
+        JOptionPane.showMessageDialog(vepi, "Solo puedes eliminar una fila a la vez.","Error",JOptionPane.ERROR_MESSAGE);
     } 
     // Si solo se ha seleccionado una fila
     else {

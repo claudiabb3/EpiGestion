@@ -344,7 +344,7 @@ public class EntregaEpiDB extends ConexionDB {
         modelo =  (DefaultTableModel) tablaEntregas.getModel();
          vrealizarEntregas = new VrealizarEntregas();
         if(tablaEntregas.getSelectedRow()==-1){
-        JOptionPane.showMessageDialog(vrealizarEntregas, "Hay que seleccionar fila");
+        JOptionPane.showMessageDialog(vrealizarEntregas, "Hay que seleccionar fila","Error",JOptionPane.ERROR_MESSAGE);
         }else{
          modelo.removeRow(tablaEntregas.getSelectedRow());
         }
@@ -368,7 +368,7 @@ public class EntregaEpiDB extends ConexionDB {
                  //Generar PDF con el ID generado
                 files.crearPDFid(idGenerado, nombre,ap1,ap2, puesto, tablaEntregas );
             }
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(VrealizarEntregas.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
